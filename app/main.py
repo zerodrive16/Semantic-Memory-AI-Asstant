@@ -1,6 +1,8 @@
-def main():
-    print("Hello from semantic-memory-ai-assistant!")
+import requests
+from app.embedding import get_embedding
 
+response = requests.get("https://localhost:8000/chat")
 
-if __name__ == "__main__":
-    main()
+print(response.status_code)
+response_json = response.json()
+print(get_embedding(response_json["response"]))
